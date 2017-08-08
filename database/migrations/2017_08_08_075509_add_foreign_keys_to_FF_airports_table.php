@@ -14,7 +14,7 @@ class AddForeignKeysToFFAirportsTable extends Migration {
 	{
 		Schema::table('FF_airports', function(Blueprint $table)
 		{
-			$table->foreign('contry_id', 'fk_FF_airports_FF_ country')->references('id')->on('FF_ country')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('contry_id', 'fk_FF_airports_FF_country')->references('id')->on('FF_country')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 

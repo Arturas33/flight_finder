@@ -12,7 +12,7 @@ class CreateFFCountryTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('FF_ country', function(Blueprint $table)
+		Schema::create('FF_country', function(Blueprint $table)
 		{
 			$table->integer('count', true);
 			$table->string('id', 36)->unique('id_UNIQUE');
