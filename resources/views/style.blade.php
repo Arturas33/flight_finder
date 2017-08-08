@@ -1,7 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Arturas
- * Date: 8/8/2017
- * Time: 2:44 PM
- */
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
+
