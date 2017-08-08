@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\FFAirLine;
 use Illuminate\Routing\Controller;
 
 class FFAirLineController extends Controller {
@@ -12,7 +13,9 @@ class FFAirLineController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        $config['list'] = FFAirLine::get()->toArray();
+
+        return view('list', $config);
 	}
 
 	/**

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\FFCountry;
 use Illuminate\Routing\Controller;
 
 class FFCountryController extends Controller {
@@ -12,7 +13,11 @@ class FFCountryController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        $config['list'] = FFCountry::get()->toArray();
+
+        //dd($config);
+
+        return view('list', $config);
 	}
 
 	/**
