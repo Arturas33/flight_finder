@@ -14,7 +14,12 @@ class FFAirLineController extends Controller {
 	public function index()
 	{
         $config['list'] = FFAirLine::get()->toArray();
-
+         $config['create'] = 'app.airline.create';
+        $config['title'] = trans('Air line list');
+         $config['show'] = 'app.airline.show';
+         $config['delete'] = 'app.airline.destroy';
+          $config['edit'] = 'app.airline.edit';
+        //dd($config);
         return view('list', $config);
 	}
 
@@ -26,7 +31,14 @@ class FFAirLineController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        $config = $this->getFormData();
+        $config['tableName'] = trans('airline');
+        $config['title'] = trans('airline');
+        $config['route'] = route('app.airline.create');
+
+
+        // dd($config);
+        return view('form', $config);
 	}
 
 	/**
@@ -87,5 +99,18 @@ class FFAirLineController extends Controller {
 	{
 		//
 	}
+
+    private function getFormData()
+    {
+
+
+        $config['fields'][] = [
+            'type' => 'single_line',
+            'key' => 'name',
+        ];
+
+
+        return $config;
+    }
 
 }
