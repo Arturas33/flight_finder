@@ -16,63 +16,63 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => 'flights'], function () {
 
-    Route::get('/', ['as' => 'app.menu.index', 'uses' => 'FFFlightsController@index']);
-    Route::get('/create', ['as' => 'app.menu.create', 'uses' => 'FFFlightsController@create']);
+    Route::get('/', ['as' => 'app.flights.index', 'uses' => 'FFFlightsController@index']);
+    Route::get('/create', ['as' => 'app.flights.create', 'uses' => 'FFFlightsController@create']);
     Route::post('/create', ['uses' => 'FFFlightsController@store']);
 
     Route::group(['prefix' => '{id}'], function () {
 
-        Route::get('/', ['as' => 'app.menu.show', 'uses' => 'FFFlightsController@show']);
-        Route::get('/edit', ['as' => 'app.menu.edit', 'uses' => 'FFFlightsController@edit']);
+        Route::get('/', ['as' => 'app.flights.show', 'uses' => 'FFFlightsController@show']);
+        Route::get('/edit', ['as' => 'app.flights.edit', 'uses' => 'FFFlightsController@edit']);
         Route::post('/edit', ['uses' => 'FFFlightsController@update']);
-        Route::delete('/delete', ['as' => 'app.menu.destroy', 'uses' => 'FFFlightsController@destroy']);
+        Route::delete('/delete', ['as' => 'app.flights.destroy', 'uses' => 'FFFlightsController@destroy']);
     });
 
 });
 Route::group(['prefix' => 'airline'], function () {
 
-    Route::get('/', ['as' => 'app.menu.index', 'uses' => 'FFAirLineController@index']);
-    Route::get('/create', ['as' => 'app.menu.create', 'uses' => 'FFAirLineController@create']);
+    Route::get('/', ['as' => 'app.airline.index', 'uses' => 'FFAirLineController@index']);
+    Route::get('/create', ['as' => 'app.airline.create', 'uses' => 'FFAirLineController@create']);
     Route::post('/create', ['uses' => 'FFAirLineController@store']);
 
     Route::group(['prefix' => '{id}'], function () {
 
-        Route::get('/', ['as' => 'app.menu.show', 'uses' => 'FFAirLineController@show']);
-        Route::get('/edit', ['as' => 'app.menu.edit', 'uses' => 'FFAirLineController@edit']);
+        Route::get('/', ['as' => 'app.airline.show', 'uses' => 'FFAirLineController@show']);
+        Route::get('/edit', ['as' => 'app.airline.edit', 'uses' => 'FFAirLineController@edit']);
         Route::post('/edit', ['uses' => 'FFAirLineController@update']);
-        Route::delete('/delete', ['as' => 'app.menu.destroy', 'uses' => 'FFAirLineController@destroy']);
+        Route::delete('/delete', ['as' => 'app.airline.destroy', 'uses' => 'FFAirLineController@destroy']);
     });
 
 });
 Route::group(['prefix' => 'airports'], function () {
 
-    Route::get('/', ['as' => 'app.menu.index', 'uses' => 'FFAirPortsController@index']);
-    Route::get('/create', ['as' => 'app.menu.create', 'uses' => 'FFAirPortsController@create']);
+    Route::get('/', ['as' => 'app.airports.index', 'uses' => 'FFAirPortsController@index']);
+    Route::get('/create', ['as' => 'app.airports.create', 'uses' => 'FFAirPortsController@create']);
     Route::post('/create', ['uses' => 'FFAirPortsController@store']);
 
     Route::group(['prefix' => '{id}'], function () {
 
-        Route::get('/', ['as' => 'app.menu.show', 'uses' => 'FFAirPortsController@show']);
-        Route::get('/edit', ['as' => 'app.menu.edit', 'uses' => 'FFAirPortsController@edit']);
+        Route::get('/', ['as' => 'app.airports.show', 'uses' => 'FFAirPortsController@show']);
+        Route::get('/edit', ['as' => 'app.airports.edit', 'uses' => 'FFAirPortsController@edit']);
         Route::post('/edit', ['uses' => 'FFAirPortsController@update']);
-        Route::delete('/delete', ['as' => 'app.menu.destroy', 'uses' => 'FFAirPortsController@destroy']);
+        Route::delete('/delete', ['as' => 'app.airports.destroy', 'uses' => 'FFAirPortsController@destroy']);
     });
 
 });
 Route::group(['prefix' => 'country'], function () {
 
-    Route::get('/', ['as' => 'app.menu.index', 'uses' => 'FFCountryController@index']);
-    Route::get('/create', ['as' => 'app.menu.create', 'uses' => 'FFCountryController@create']);
+    Route::get('/', ['as' => 'app.country.index', 'uses' => 'FFCountryController@index']);
+    Route::get('/create', ['as' => 'app.country.create', 'uses' => 'FFCountryController@create']);
     Route::post('/create', ['uses' => 'FFCountryController@store']);
 
     Route::group(['prefix' => '{id}'], function () {
 
-        Route::get('/', ['as' => 'app.menu.show', 'uses' => 'FFCountryController@show']);
-        Route::get('/edit', ['as' => 'app.menu.edit', 'uses' => 'FFCountryController@edit']);
+        Route::get('/', ['as' => 'app.country.show', 'uses' => 'FFCountryController@show']);
+        Route::get('/edit', ['as' => 'app.country.edit', 'uses' => 'FFCountryController@edit']);
         Route::post('/edit', ['uses' => 'FFCountryController@update']);
-        Route::delete('/delete', ['as' => 'app.menu.destroy', 'uses' => 'FFCountryController@destroy']);
+        Route::delete('/delete', ['as' => 'app.country.destroy', 'uses' => 'FFCountryController@destroy']);
     });
 
 });
