@@ -2,14 +2,14 @@
 <html>
 <head>
     <title>admin</title>
-    @include('admin.style')
+    @include('style')
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
 </head>
 <body>
 
 
-@include('admin.nav')
+@include('menu')
 
 <div id="page">
     @yield('content')
