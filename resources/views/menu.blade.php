@@ -10,7 +10,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{'/country'}}">Country</a></li>
+                <li><a href="{{'/country'}}">Country</a></li>
                 <li><a href="{{'/airline'}}">Air line</a></li>
                 <li><a href="{{'/airports'}}">Air ports</a></li>
                 <li><a href="{{'/flights'}}">Flights</a></li>
