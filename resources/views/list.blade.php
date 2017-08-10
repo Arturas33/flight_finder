@@ -21,7 +21,7 @@
                         @if(isset($edit))
                             <th>Edit</th>
                             <th>Delete</th>
-                            <th>Show</th>
+
                         @endif
                     </tr>
                     <tr>
@@ -95,11 +95,7 @@
                                     </button>
                                 </td>
 
-                                <td>
-                                    <a href="{{route($show, $record['id'])}}">
-                                        <button type="button" class="btn btn-success">Show</button>
-                                    </a>
-                                </td>
+
                             @endif
 
                         </tr>
