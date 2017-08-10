@@ -49,7 +49,13 @@ class FFAirLineController extends Controller {
 	 */
 	public function store()
 	{
-		//
+        $data = request()->all();
+        FFAirLine::create($data);
+
+
+        // dd($record);
+
+        return redirect(route('app.airline.index'));
 	}
 
 	/**
@@ -73,7 +79,14 @@ class FFAirLineController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $record = FFAirLine::find($id)->toArray();
+        $config = $this->getFormData();
+        $config['record'] = $record;
+        $config['titleForm'] = $id;
+        $config['route'] = route('app.airline.edit', $id);
+        $config['back'] = 'app.airline.index';
+
+        return view('form', $config);
 	}
 
 	/**
@@ -85,7 +98,12 @@ class FFAirLineController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $data = request()->all();
+        $record = FFAirLine::find($id);
+        $record->update($data);
+
+
+        return redirect(route('app.airline.index'));
 	}
 
 	/**
@@ -97,7 +115,8 @@ class FFAirLineController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+	    FFAirLine::destroy($id);
+	    return["success" => true, "id" => $id];
 	}
 
     private function getFormData()

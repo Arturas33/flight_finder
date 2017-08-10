@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\FFFlights;
 use Illuminate\Routing\Controller;
 
 class FFFlightsController extends Controller {
@@ -12,7 +13,13 @@ class FFFlightsController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        $config['list'] = FFFlights::get()->toArray();
+        $config['create'] = 'app.flights.create';
+        $config['title'] = trans('Flights list');
+
+
+
+        return view('list', $config);
 	}
 
 	/**

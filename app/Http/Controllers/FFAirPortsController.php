@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\FFAirLine;
 use App\FFAirPorts;
 use App\FFCountry;
 use Illuminate\Routing\Controller;
@@ -34,9 +35,9 @@ class FFAirPortsController extends Controller
     public function create()
     {
         $config = $this->getFormData();
-        $config['tableName'] = trans('country');
-        $config['title'] = trans('country');
-        $config['route'] = route('app.country.create');
+        $config['tableName'] = trans('airports');
+        $config['title'] = trans('airports');
+        $config['route'] = route('app.airports.create');
 
 
         // dd($config);
@@ -51,7 +52,15 @@ class FFAirPortsController extends Controller
      */
     public function store()
     {
-        //
+        $data = request()->all();
+        FFAirPorts::create([
+            'name' => $data['name'],
+            'contry_id' => $data['contry_id'],
+            'city' => $data['city'],
+        ]);
+
+        return redirect(route('app.airports.index'));
+
     }
 
     /**
@@ -75,7 +84,14 @@ class FFAirPortsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $record = FFAirPorts::find($id)->toArray();
+        $config = $this->getFormData();
+        $config['record'] = $record;
+        $config['titleFrom'] = $id;
+        $config['route'] = route('app.airports.edit', $id);
+        $config['back'] = 'app.airports.index';
+
+        return view('form', $config);
     }
 
     /**
@@ -87,7 +103,12 @@ class FFAirPortsController extends Controller
      */
     public function update($id)
     {
-        //
+        $data = request()->all();
+        $record = FFAirPorts::find($id);
+        $record->update($data);
+
+
+        return redirect(route('app.airports.index'));
     }
 
     /**
@@ -99,7 +120,9 @@ class FFAirPortsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        FFCountry::destroy(FFCountry::where('name',$id)->pluck('id')->toArray());
+        FFAirPorts::destroy($id);
+        return["success" => true, "id" => $id];
     }
 
 
@@ -108,7 +131,7 @@ class FFAirPortsController extends Controller
 
         $config['fields'][] = [
             'type' => 'single_line',
-            'key' => 'id',
+            'key' => 'city',
 
         ];
         $config['fields'][] = [
