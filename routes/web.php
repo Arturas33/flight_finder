@@ -12,8 +12,31 @@
 */
 
 Route::get('/', function () {
-    return view('core');
+    return view('welcome');
 });
+
+
+Route::group(['prefix' => 'gg'], function () {
+
+    Route::get('/air', [ 'uses' => 'FakerData@getRandomString']);
+    Route::get('/fl', [ 'uses' => 'FakerData@generateFlights']);
+
+});
+Route::get('/front', ['as' => 'app.search.index', 'uses' => 'FrontEndController@index']);
+
+//Route::group(['prefix' => 'search'], function () {
+//
+//    Route::get('/', ['as' => 'app.search.index', 'uses' => 'FrontEndController@index']);
+//    Route::get('/create', ['as' => 'app.search.create', 'uses' => 'FrontEndController@create']);
+//    Route::post('/create', ['uses' => 'FrontEndController@store']);
+//
+//    Route::group(['prefix' => '{id}'], function () {
+//
+//        Route::get('/', ['as' => 'app.search.show', 'uses' => 'FrontEndController@show']);
+//        Route::get('/edit', ['as' => 'app.search.edit', 'uses' => 'FrontEndController@edit']);
+//        Route::post('/edit', ['uses' => 'FrontEndController@update']);
+//        Route::delete('/delete', ['as' => 'app.search.destroy', 'uses' => 'FrontEndController@destroy']);
+//    });
 
 
 Route::group(['prefix' => 'flights'], function () {
