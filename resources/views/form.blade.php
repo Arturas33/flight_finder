@@ -118,90 +118,90 @@
 
     <script>
 
-        $('#language_code').bind(
-            'change', function () {
-
-                window.location.href = '?language_code=' + $('#language_code').val();
-                $('#language_code').val()
-            }
-        )
-
-        var $time = $('#time');
-        var $virtual_room = $('#virtual_room');
-
-
-        if ($('#time').length > 0 && $('#virtual_room').length > 0) {
-
-            $time.bind('change', getAvailableHour);
-
-            $virtual_room.bind('change', getAvailableHour);
-
-            function prepareForCheckBox(day) {
-
-
-                // new date
-                var date = new Date(day + ' 00:00:00');
-
-                // checking if date is today
-                if (date.toDateString() == new Date().toDateString())
-                    date = new Date();
-
-                // closing time property
-                var closingTime = 22;
-
-                // opening time property
-                var openingTime = 10;
-
-                // available times for this
-                var availableTimes = [];
-
-                // allow rezervation 2 hours from now
-                date.setHours(date.getHours() + 2);
-
-                // moving minutes to dividable by 10
-                date.setMinutes(Math.ceil(date.getMinutes() / 10) * 10);
-
-                // while it is not closing time execute
-                while (date.getHours() < closingTime) {
-                    // cheking if hours are more than opening time
-                    if (date.getHours() >= openingTime) {
-                        // creating rezervation time visible for users
-                        var time = date.getHours() + ':' + pad(date.getMinutes(), 2);
-                        // creating dateTime / id which will be recorded in the databse
-                        var dateTime = day + ' ' + time + ':00';
-
-                        // adding data to array
-                        availableTimes.push(
-                            {
-                                title: time,
-                                id: dateTime,
-                                // cheking if time is reserved
-                                reserved: reserved.indexOf(dateTime) >= 0 ? 1 : 0
-                            });
-                    }
-
-                    // interval each 10 minutes
-                    // increasing time by 10 minutes
-                    date.setMinutes(date.getMinutes() + 10);
-                }
-
-                // function which adds zeros from left size of the number 1 -> 001
-                function pad(num, size) {
-                    var s = num + "";
-                    while (s.length < size) s = "0" + s;
-                    return s;
-                }
-
-                return availableTimes ;
-            }
-
-
-        }
-
-        function generateCheckBoxes(list) {
-
-            return prepareForCheckBox (reserved , day);
-        }
+//        $('#language_code').bind(
+//            'change', function () {
+//
+//                window.location.href = '?language_code=' + $('#language_code').val();
+//                $('#language_code').val()
+//            }
+//        )
+//
+//        var $time = $('#time');
+//        var $virtual_room = $('#virtual_room');
+//
+//
+//        if ($('#time').length > 0 && $('#virtual_room').length > 0) {
+//
+//            $time.bind('change', getAvailableHour);
+//
+//            $virtual_room.bind('change', getAvailableHour);
+//
+//            function prepareForCheckBox(day) {
+//
+//
+//                // new date
+//                var date = new Date(day + ' 00:00:00');
+//
+//                // checking if date is today
+//                if (date.toDateString() == new Date().toDateString())
+//                    date = new Date();
+//
+//                // closing time property
+//                var closingTime = 22;
+//
+//                // opening time property
+//                var openingTime = 10;
+//
+//                // available times for this
+//                var availableTimes = [];
+//
+//                // allow rezervation 2 hours from now
+//                date.setHours(date.getHours() + 2);
+//
+//                // moving minutes to dividable by 10
+//                date.setMinutes(Math.ceil(date.getMinutes() / 10) * 10);
+//
+//                // while it is not closing time execute
+//                while (date.getHours() < closingTime) {
+//                    // cheking if hours are more than opening time
+//                    if (date.getHours() >= openingTime) {
+//                        // creating rezervation time visible for users
+//                        var time = date.getHours() + ':' + pad(date.getMinutes(), 2);
+//                        // creating dateTime / id which will be recorded in the databse
+//                        var dateTime = day + ' ' + time + ':00';
+//
+//                        // adding data to array
+//                        availableTimes.push(
+//                            {
+//                                title: time,
+//                                id: dateTime,
+//                                // cheking if time is reserved
+//                                reserved: reserved.indexOf(dateTime) >= 0 ? 1 : 0
+//                            });
+//                    }
+//
+//                    // interval each 10 minutes
+//                    // increasing time by 10 minutes
+//                    date.setMinutes(date.getMinutes() + 10);
+//                }
+//
+//                // function which adds zeros from left size of the number 1 -> 001
+//                function pad(num, size) {
+//                    var s = num + "";
+//                    while (s.length < size) s = "0" + s;
+//                    return s;
+//                }
+//
+//                return availableTimes ;
+//            }
+//
+//
+//        }
+//
+//        function generateCheckBoxes(list) {
+//
+//            return prepareForCheckBox (reserved , day);
+//        }
 
         {{--function getAvailableHour() {--}}
             {{--$.ajax({--}}
@@ -226,9 +226,9 @@
         {{--}--}}
 
 
-        console.log('all good')
-        // console.log($('#language_code'));
-
+//        console.log('all good')
+//        // console.log($('#language_code'));
+//
 
     </script>
 @endsection
